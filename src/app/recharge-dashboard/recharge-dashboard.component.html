@@ -1,0 +1,145 @@
+<app-navbar></app-navbar>
+<div class="container-fluid mt-0">
+  <!-- User Information -->
+  <div class="row mb-4 userInfo">
+    <div class="row align-items-center">
+      <!-- User Details Section -->
+      <div class="col-md-6 text-start">
+        <h2>Welcome, User</h2>
+        <p>Your Mobile Number: {{ mobileNumber }}</p>
+        <button class="btn btn-secondary" (click)="changeAccount()">Change Account</button>
+      </div>
+
+      <!-- Currently Active Plans Section -->
+      <div class="col-md-6 text-center active-plansdiv">
+        <div class="active-plans">
+          <h5 style="color: rgb(9, 9, 9);">Your Currently Active Plans</h5>
+          <!-- Bootstrap Carousel for Active Plans -->
+          <div id="activePlansCarousel" class="carousel slide">
+            <div class="carousel-inner">
+              <div class="carousel-item" *ngFor="let plan of activePlans; let i = index" [ngClass]="{'active': i === 0}">
+                <div class="card plan-card text-center">
+                  <div class="card-body activePlanCard">
+                    <h5 class="card-title">{{ plan.vrPlanStatus }}</h5>
+                    <div style="color: rgb(236, 66, 15); font-weight: bold; font-size: larger;">
+                      {{ plan.vrPlanPrice | currency:'INR':'symbol' }}
+                    </div>
+                    <p>Validity: <b>{{ plan.vrPlanValidity }} days</b></p>
+                    <div class="card-footer">
+                      <p class="card-text">Expire Date: {{ plan.vrPlanExpire | date }}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#activePlansCarousel" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true" style="background-color: rgb(217, 244, 223);"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#activePlansCarousel" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true" style="background-color: rgb(217, 244, 223);"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Recharge Plans Section -->
+  <div class="row">
+    <!-- Vertical Navbar for Categories -->
+    <div class="col-md-2 mt-20">
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="search-button" 
+               style="border: 2px solid lightgreen;" value="unlimited"
+               [(ngModel)]="searchQuery" 
+               (ngModelChange)="onSearchChange($event)">
+      </div>
+      <div class="list-group classic-navbar">
+        <a class="list-group-item list-group-item-action" (click)="onSearchChange('1GB')">1GB/day</a>
+        <a class="list-group-item list-group-item-action" (click)="onSearchChange('1.5GB')">1.5GB/day</a>
+        <a class="list-group-item list-group-item-action" (click)="onSearchChange('2GB')">2GB/day</a>
+      </div>
+    </div>
+
+    <!-- Horizontal Navbar with Search Bar -->
+    <div class="col-md-10">
+      <div class="row">
+        <div class="col-md-12">
+          <h2>Recharge Plans</h2>
+        </div>
+      </div>
+      <div class="col-md-10">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <!-- Navbar Start -->
+          <nav class="navbar navbar-expand-md navbar-light">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <div class="btn-group navbarbutton">
+                <button class="btn" (click)="onCategoryChange('Unlimited')">Unlimited</button>
+                <button class="btn" (click)="onCategoryChange('Data')">Data</button>
+                <button class="btn" (click)="onCategoryChange('Data_Booster')">Data Booster</button>
+                <button class="btn" (click)="onCategoryChange('Talk_Time')">Talk Time</button>
+                <button class="btn" (click)="onCategoryChange('True_5G')">True 5G</button>
+                <button class="btn" (click)="onCategoryChange('International_Roaming')">International Roaming</button>
+              </div>
+            </div>
+          </nav>
+          <!-- Navbar End -->
+        </div>
+      </div>
+
+      <!-- Plans Cards -->
+      <div class="row">
+        <div class="col-md-3 mb-4" *ngFor="let plan of plans">
+          <div class="card plan-card text-center">
+            <div>
+              <img src="../Icons/s5g-icon.jpeg" class="card-img" alt="Plan Image">
+              <b style="color: greeny;"> {{ plan.plan_Price | currency:'INR':'symbol' }} </b>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">{{ plan.plan_Category }}</h5>
+              <p class="card-text">Validity: {{ plan.plan_Validity }} days</p>
+              <p class="card-text">Voice Calls: {{ plan.plan_Voice_Calls }}</p>
+              <p class="card-text">Data: {{ plan.plan_Data }}</p>
+              <p class="card-text">SMS: {{ plan.plan_Sms }}</p>
+              <div class="card-footer">
+                <a  class="btn btn-link viewDetailsLink" (click)="openModal(plan)">View Details</a>
+                <button class="btn btn-primary rechargeButton" (click)="recharge(plan.plan_Id)">Recharge</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>
+
+<!-- Modal Template -->
+<div *ngIf="isModalOpen" class="modal-backdrop">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title">Plan Details</h4>
+      <button type="button" class="close" (click)="closeModal()">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div *ngIf="selectedPlan">
+        <h5>{{ selectedPlan.plan_Category }}</h5>
+        <p>Price: {{ selectedPlan.plan_Price | currency:'INR':'symbol' }}</p>
+        <p>Validity: {{ selectedPlan.plan_Validity }} days</p>
+        <p>Voice Calls: {{ selectedPlan.plan_Voice_Calls }}</p>
+        <p>Data: {{ selectedPlan.plan_Data }}</p>
+        <p>SMS: {{ selectedPlan.plan_Sms }}</p>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" (click)="closeModal()">Close</button>
+    </div>
+  </div>
+</div>

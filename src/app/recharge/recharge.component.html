@@ -1,0 +1,35 @@
+<app-navbar></app-navbar>
+<div class="container-fluid main-div">
+  <div class="container mt-5" >
+    <div class="row align-items-between ">
+        <!-- Form Side -->
+        <div class="col-md-6  " style="background-color: rgb(255, 252, 252); border-radius: 30px;">
+            <div class="col-md-6 text-center">
+              <img src="./Icons/Re.png" alt="Classic Design " class="img-fluid classic-img " style="width: 50%;">
+              <div>
+                <p>Discover Our Top Plans</p>
+                <h5>By Connect with us !</h5>
+              </div>          
+            </div>
+
+            <div class="form-floating mb-3 mt-4 " >
+              <input type="long" class="form-control" id="floatingInput" placeholder="" [(ngModel)]="mobileNumber">
+              <label for="floatingInput">Mobile Number</label>
+            </div>
+            <button type="button" class="btn btn-success" (click)="checkUser()" >Let's Connect</button>
+            <div *ngIf="errorMessage" class="alert alert-danger mt-3">{{ errorMessage }}</div>
+           
+        </div>
+        <div class="col-md-6 text-center">
+          <img src="./HomeTrekImages/StayConnectedAlways.png" alt="Classic Design " class="img-fluid classic-img " style="width: 100%;">
+          <div>
+           
+          </div>          
+        </div>
+
+    </div>
+    <app-home-page></app-home-page>
+</div>
+
+
+</div>

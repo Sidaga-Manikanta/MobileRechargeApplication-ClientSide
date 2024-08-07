@@ -1,0 +1,14 @@
+#carouselExampleAutoplaying{
+ 
+}
+.ScrollImages{
+    width: 70%;
+    background-color: rgb(238, 255, 238);
+    margin-left: 5rem;
+    border-radius: 30px;
+}  
+.form-floating{
+    width: 70%;
+    border-color: green;
+    
+}

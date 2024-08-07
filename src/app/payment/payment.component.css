@@ -1,0 +1,43 @@
+
+  
+  .card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 80%;
+  }
+  
+  .amount-text {
+    font-weight: bold;
+    color: #28a745;
+  }
+  
+  .form-control {
+    width: 75%; /* Narrower input field */
+  }
+  
+  .mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .btn {
+    width: 50%; /* Same width as input fields */
+  }
+  
+  .upi-icon {
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+    border-radius: 8px;
+    border: 2px solid transparent;
+    transition: border-color 0.3s ease;
+  }
+  
+  .upi-icon:hover {
+    border-color: #007bff;
+  }
+  
+  
+  input[type="radio"]:checked + .upi-icon {
+    border-color: #007bff; /* Highlight border when selected */
+  }

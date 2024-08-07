@@ -1,0 +1,29 @@
+.card-img-top {
+    max-height: 150px;
+    object-fit: contain;
+  }
+  
+  .carousel-caption {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+  }
+  
+  .carousel-item img {
+    object-fit: cover;
+  }
+  
+  .heading {
+    font-family: 'Montserrat', sans-serif;
+    color: #333;
+  }
+  
+  .subheading {
+    font-family: 'Montserrat', sans-serif;
+    color: #555;
+    font-size: 18px;
+  }
+  
+  .card-title {
+    font-family: 'Montserrat', sans-serif;
+  }
+  

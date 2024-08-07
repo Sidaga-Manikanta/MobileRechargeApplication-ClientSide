@@ -1,0 +1,66 @@
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <!-- Image on the left -->
+      <a class="navbar-brand" href="#">
+        <img src="./Icons/Re.png" alt="Logo" width="50" height="50">
+      </a>
+      <!-- Centered title with a funny font -->
+      <div class="d-none d-lg-block mx-auto">
+        <span class="navbar-title" style="color:green;">RechargeBuddy</span>
+      </div>
+      <!-- Toggle button for mobile view -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <!-- Navbar links -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <button class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#connectModal">Connect with Us</button>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/profile">
+              <i class="fas fa-user-circle" style="font-size: 30px;"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+  <!-- Modal for Connect with Us -->
+  <div class="modal fade" id="connectModal" tabindex="-1" aria-labelledby="connectModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="connectModalLabel">Connect with Us</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form (ngSubmit)="onFormSubmit($event)">
+            <div class="mb-3">
+              <label for="name" class="form-label">Name</label>
+              <input type="text" class="form-control" id="name" required>
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" class="form-control" id="email" required>
+            </div>
+            <div class="mb-3">
+              <label for="address" class="form-label">Address</label>
+              <textarea class="form-control" id="address" rows="3" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-success">Send</button>
+          </form>
+          <!-- Success Message -->
+          <div *ngIf="formSubmitted" class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+            <i class="fas fa-check-circle"></i> <!-- Success icon -->
+            Details forwarded successfully! We will contact you shortly.
+            <button type="button" class="btn-close" (click)="closeSuccessMessage()"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

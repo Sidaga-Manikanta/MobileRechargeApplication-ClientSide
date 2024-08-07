@@ -1,0 +1,112 @@
+.plan-card {
+    display: flex;
+    align-items: center; /* Center items vertically */
+    border-radius: 8px; /* Optional: for rounded corners */
+    overflow: hidden; /* Ensure content stays within the card */
+    border: none;/* Optional: for card border */
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1); /* Optional: for card shadow */
+    margin: 0 auto; /* Center the card within its column */
+    max-width: 100%; /* Ensure the card fits its container */
+    background-color:#f1f7f1
+}
+.plan-card::hover{
+  background-color: whitesmoke;
+  
+}
+.card-img {
+    width: 40px; /* Adjust size as needed */
+    height: 40px; /* Adjust size as needed */
+    flex-shrink: 0; /* Prevent image from shrinking */
+    margin-right:4rem;
+    margin-top: 1rem;
+}
+
+.card-body {
+    flex: 1;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: rgb(213, 237, 213);
+}
+
+.card-text {
+    margin-bottom: 0rem; /* Adjust margin between text elements */
+    font-size: small;
+}
+
+.card-footer {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.rechargeButton{
+    font-size: small;
+}
+.viewDetailsLink{
+    margin-right: 2rem;
+    font-size: x-small;
+}
+
+.userInfo{
+  background-color: #f1f7f1 ;
+  border-color: #eff0ef;
+  border-width: 1px;
+  padding: 1rem;
+}
+
+.btn{
+  background-color: rgb(58, 135, 58);
+  border:2px 2px 2px 2px;
+  color: white;
+}
+.activePlanCard{
+    color: rgb(69, 69, 69);
+    border-radius: 20%;
+    border:rgb(179, 236, 179)
+    
+}
+/* .active-plans{
+    width: 65%;
+} */
+.active-plansdiv{
+    background-color: rgb(241, 244, 241);
+}
+
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1040;
+  }
+  
+  .modal-content {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    z-index: 1050;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .modal-footer {
+    text-align: right;
+  }
+
+
+
+
